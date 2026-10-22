@@ -7,13 +7,13 @@
   <MyIP/>
   <Shell>sh</Shell>
   <Privileged>false</Privileged>
-  <Support>https://git.clownhouse.io/jeryd/barracuda</Support>
-  <Project>https://git.clownhouse.io/jeryd/barracuda</Project>
+  <Support>https://github.com/UberMetroid/barracuda</Support>
+  <Project>https://github.com/UberMetroid/barracuda</Project>
   <Overview>Barracuda: Hardened, reproducible GNU Guix + zero-dependency Rust BitTorrent VPN appliance for the *arr stack (qBittorrent-nox + Private Internet Access WireGuard + automatic port-forwarding + HTTP/HTTPS CONNECT proxy for Prowlarr + real-time media malware/extension/magic-byte scrubber for Sonarr, Radarr, Lidarr, and Prowlarr).</Overview>
   <Category>Downloaders: Network:VPN Security:</Category>
   <WebUI>http://[IP]:[PORT:8112]/</WebUI>
-  <TemplateURL>https://git.clownhouse.io/jeryd/barracuda/raw/branch/main/unraid-template.xml</TemplateURL>
-  <Icon>https://git.clownhouse.io/jeryd/barracuda/raw/branch/main/assets/barracuda-icon.png</Icon>
+  <TemplateURL>https://raw.githubusercontent.com/UberMetroid/barracuda/main/unraid-template.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/UberMetroid/barracuda/main/assets/barracuda-icon.png</Icon>
   <ExtraParams>--cap-add=NET_ADMIN --sysctl net.ipv4.conf.all.src_valid_mark=1 --sysctl net.ipv6.conf.all.disable_ipv6=1</ExtraParams>
   <PostArgs/>
   <CPUset/>
