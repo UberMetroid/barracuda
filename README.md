@@ -19,18 +19,10 @@ BitTorrent over VPN for the `*arr` stack (`Sonarr`, `Radarr`, `Lidarr`, `Prowlar
 curl -fsSL https://raw.githubusercontent.com/UberMetroid/barracuda/main/unraid-template.xml \
   -o /boot/config/plugins/dockerMan/templates-user/my-barracuda.xml
 ```
-1. Load the image once on your Unraid host:
-   ```bash
-   curl -fL https://github.com/UberMetroid/barracuda/releases/download/v0.1.0/barracuda-guix-docker-x86_64.tar.gz | docker load
-   docker tag barracuda-suite-qbittorrent-no-x:latest localhost/barracuda:latest
-   ```
-2. In Unraid: **Docker** -> **Add Container** -> select **`barracuda`** -> fill in `PIA_USER` and `PIA_PASS` -> **Apply**.
+In Unraid: **Docker** -> **Add Container** -> select **`barracuda`** -> fill in `PIA_USER` and `PIA_PASS` -> **Apply** (pulls `ghcr.io/ubermetroid/barracuda:latest` automatically).
 
 ### Option B: Docker / Podman CLI
 ```bash
-curl -fL https://github.com/UberMetroid/barracuda/releases/download/v0.1.0/barracuda-guix-docker-x86_64.tar.gz | docker load
-docker tag barracuda-suite-qbittorrent-no-x:latest localhost/barracuda:latest
-
 docker run -d \
   --name=barracuda \
   --restart=unless-stopped \
@@ -45,7 +37,7 @@ docker run -d \
   -e LAN_NETWORK="192.168.1.0/24,100.64.0.0/10" \
   -v /mnt/cache/appdata/barracuda:/config:rw \
   -v /mnt/user/data/downloads:/downloads:rw \
-  localhost/barracuda:latest
+  ghcr.io/ubermetroid/barracuda:latest
 ```
 
 ---
