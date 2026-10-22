@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>barracuda</Name>
-  <Repository>git.clownhouse.io/jeryd/barracuda:latest</Repository>
-  <Registry>https://git.clownhouse.io</Registry>
+  <Repository>localhost/barracuda:latest</Repository>
+  <Registry>https://github.com/UberMetroid/barracuda</Registry>
   <Network>bridge</Network>
   <MyIP/>
   <Shell>sh</Shell>
