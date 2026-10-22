@@ -1,0 +1,16 @@
+[workspace]
+resolver = "2"
+members = [
+    "barracuda-init",
+    "barracuda-wg",
+    "barracuda-portforward",
+    "barracuda-scrubber",
+    "barracuda-proxy",
+]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

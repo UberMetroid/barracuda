@@ -1,0 +1,14 @@
+{
+    "lidarr": {
+        "save_path": "/downloads/lidarr"
+    },
+    "prowlarr": {
+        "save_path": "/downloads/prowlarr"
+    },
+    "radarr": {
+        "save_path": "/downloads/radarr"
+    },
+    "sonarr": {
+        "save_path": "/downloads/sonarr"
+    }
+}
