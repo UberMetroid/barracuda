@@ -54,7 +54,7 @@ fn supervise_loop(
             ));
             if let Ok(c) = spawn_unprivileged(
                 "qbittorrent-nox",
-                &["--webui-port=8112", "--profile=/config"],
+                &["--webui-port=8212", "--profile=/config"],
                 puid,
                 pgid,
                 umask_val,
@@ -179,13 +179,13 @@ fn main() {
     ));
     let qbt_child = spawn_or_exit(spawn_unprivileged(
         "qbittorrent-nox",
-        &["--webui-port=8112", "--profile=/config"],
+        &["--webui-port=8212", "--profile=/config"],
         puid,
         pgid,
         umask_val,
     ));
 
-    log("All child daemons launched (qbittorrent-nox:8112, barracuda-proxy:8118, health:9099, barracuda-scrubber, barracuda-portforward).");
+    log("All child daemons launched (qbittorrent-nox:8212, barracuda-proxy:8218, health:9299, barracuda-scrubber, barracuda-portforward).");
     supervise_loop(
         puid,
         pgid,

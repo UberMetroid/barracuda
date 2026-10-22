@@ -29,9 +29,9 @@ docker run -d \
   --cap-add=NET_ADMIN \
   --sysctl net.ipv4.conf.all.src_valid_mark=1 \
   --sysctl net.ipv6.conf.all.disable_ipv6=1 \
-  -p 8112:8112/tcp \
-  -p 8118:8118/tcp \
-  -p 9099:9099/tcp \
+  -p 8212:8212/tcp \
+  -p 8218:8218/tcp \
+  -p 9299:9299/tcp \
   -e PIA_USER="p1234567" \
   -e PIA_PASS="your_pia_password" \
   -e LAN_NETWORK="192.168.1.0/24,100.64.0.0/10" \
@@ -46,9 +46,9 @@ docker run -d \
 
 | Port | Service | How to Connect |
 | :--- | :--- | :--- |
-| **`8112`** | **qBittorrent WebUI & API** | In Sonarr / Radarr / Lidarr / Prowlarr -> **Settings -> Download Clients -> qBittorrent**. Point to `<host-ip>:8112`. Categories `sonarr`, `radarr`, `lidarr`, and `prowlarr` are pre-created automatically. |
-| **`8118`** | **VPN HTTP/HTTPS Proxy** | In Prowlarr -> **Settings -> Indexers -> Add Proxy (`Http`)**. Point to `<host-ip>:8118`. Tag any indexer you want routed through the WireGuard tunnel. |
-| **`9099`** | **Health & Port Status** | `curl http://<host-ip>:9099/status` returns JSON (`healthy`, active `wg0` handshake age, and live PIA forwarded port). |
+| **`8212`** | **qBittorrent WebUI & API** | In Sonarr / Radarr / Lidarr / Prowlarr -> **Settings -> Download Clients -> qBittorrent**. Point to `<host-ip>:8212`. Categories `sonarr`, `radarr`, `lidarr`, and `prowlarr` are pre-created automatically. |
+| **`8218`** | **VPN HTTP/HTTPS Proxy** | In Prowlarr -> **Settings -> Indexers -> Add Proxy (`Http`)**. Point to `<host-ip>:8218`. Tag any indexer you want routed through the WireGuard tunnel. |
+| **`9299`** | **Health & Port Status** | `curl http://<host-ip>:9299/status` returns JSON (`healthy`, active `wg0` handshake age, and live PIA forwarded port). |
 
 ---
 
@@ -58,7 +58,7 @@ docker run -d \
 | :--- | :---: | :--- | :--- |
 | `PIA_USER` | **Yes** | — | Private Internet Access username (`p1234567`) |
 | `PIA_PASS` | **Yes** | — | Private Internet Access password |
-| `LAN_NETWORK` | **Yes** | `192.168.1.0/24,100.64.0.0/10` | Subnets allowed to reach ports `8112`, `8118`, `9099` |
+| `LAN_NETWORK` | **Yes** | `192.168.1.0/24,100.64.0.0/10` | Subnets allowed to reach ports `8212`, `8218`, `9299` |
 | `PIA_REGION` | No | `auto` | PIA port-forwarding region ID (`auto` picks lowest latency) |
 | `PUID` / `PGID` / `UMASK` | No | `99` / `100` / `002` | Unprivileged runtime UID, GID, and file creation mask |
 | `SONARR_URL` / `SONARR_API_KEY` | No | — | Auto-blocklists & re-searches bad releases in Sonarr |
@@ -71,7 +71,7 @@ docker run -d \
 
 ### Check Killswitch & Active Port
 ```bash
-curl -s http://localhost:9099/status
+curl -s http://localhost:9299/status
 docker exec barracuda iptables -S
 ```
 

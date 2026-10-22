@@ -48,7 +48,7 @@ pub fn update_qbittorrent_port(port: u16) {
                 "5",
                 "-X",
                 "POST",
-                "http://127.0.0.1:8112/api/v2/app/setPreferences",
+                "http://127.0.0.1:8212/api/v2/app/setPreferences",
                 "--data-urlencode",
                 &json_arg,
             ],
@@ -60,7 +60,7 @@ pub fn update_qbittorrent_port(port: u16) {
         }
         thread::sleep(Duration::from_secs(2));
     }
-    log("WARN: Could not reach qBittorrent WebUI on 127.0.0.1:8112 to set listen_port yet");
+    log("WARN: Could not reach qBittorrent WebUI on 127.0.0.1:8212 to set listen_port yet");
 }
 
 pub fn ensure_wg_port_rule(port: u16, prev_port: Option<u16>) {

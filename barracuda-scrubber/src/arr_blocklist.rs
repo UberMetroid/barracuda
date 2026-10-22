@@ -182,7 +182,7 @@ pub fn poll_qbittorrent_torrents(quarantined_count: &mut u64) {
             "-sf",
             "--max-time",
             "5",
-            "http://127.0.0.1:8112/api/v2/torrents/info",
+            "http://127.0.0.1:8212/api/v2/torrents/info",
         ],
     ) else {
         return;
@@ -195,7 +195,7 @@ pub fn poll_qbittorrent_torrents(quarantined_count: &mut u64) {
         let t_name = extract_json_str(&t_obj, "name").unwrap_or_else(|| "unknown".to_string());
         let category = extract_json_str(&t_obj, "category").unwrap_or_default();
 
-        let files_url = format!("http://127.0.0.1:8112/api/v2/torrents/files?hash={hash}");
+        let files_url = format!("http://127.0.0.1:8212/api/v2/torrents/files?hash={hash}");
         let Ok(files_json) = run_cmd("curl", &["-sf", "--max-time", "5", &files_url]) else {
             continue;
         };
@@ -227,7 +227,7 @@ pub fn poll_qbittorrent_torrents(quarantined_count: &mut u64) {
                     "5",
                     "-X",
                     "POST",
-                    "http://127.0.0.1:8112/api/v2/torrents/delete",
+                    "http://127.0.0.1:8212/api/v2/torrents/delete",
                     "-d",
                     &hashes_arg,
                     "-d",

@@ -1,4 +1,4 @@
-//! Health & VPN tunnel telemetry HTTP endpoint on port 9099.
+//! Health & VPN tunnel telemetry HTTP endpoint on port 9299.
 
 use std::fs;
 use std::io::{Read, Write};

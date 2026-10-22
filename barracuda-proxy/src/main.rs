@@ -1,4 +1,4 @@
-//! Barracuda VPN-bound HTTP/HTTPS CONNECT proxy (8118) and JSON health server (9099).
+//! Barracuda VPN-bound HTTP/HTTPS CONNECT proxy (8218) and JSON health server (9299).
 #![forbid(unsafe_code)]
 #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic)]
 
@@ -27,12 +27,12 @@ fn main() {
 
     let health_clients = Arc::clone(&active_clients);
     thread::spawn(move || {
-        let Ok(listener) = TcpListener::bind(SocketAddr::from((Ipv4Addr::UNSPECIFIED, 9099)))
+        let Ok(listener) = TcpListener::bind(SocketAddr::from((Ipv4Addr::UNSPECIFIED, 9299)))
         else {
-            log("FATAL: Failed to bind health API on :9099");
+            log("FATAL: Failed to bind health API on :9299");
             exit(1);
         };
-        log("Health API listening on 0.0.0.0:9099 (/status)");
+        log("Health API listening on 0.0.0.0:9299 (/status)");
         for stream in listener.incoming().flatten() {
             let cur = health_clients.load(Ordering::Relaxed);
             thread::spawn(move || {
@@ -41,11 +41,11 @@ fn main() {
         }
     });
 
-    let Ok(listener) = TcpListener::bind(SocketAddr::from((Ipv4Addr::UNSPECIFIED, 8118))) else {
-        log("FATAL: Failed to bind HTTP CONNECT proxy on :8118");
+    let Ok(listener) = TcpListener::bind(SocketAddr::from((Ipv4Addr::UNSPECIFIED, 8218))) else {
+        log("FATAL: Failed to bind HTTP CONNECT proxy on :8218");
         exit(1);
     };
-    log("HTTP/HTTPS CONNECT proxy listening on 0.0.0.0:8118");
+    log("HTTP/HTTPS CONNECT proxy listening on 0.0.0.0:8218");
 
     for stream in listener.incoming().flatten() {
         let cur = active_clients.load(Ordering::Relaxed);

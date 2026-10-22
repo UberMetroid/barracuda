@@ -83,7 +83,7 @@ pub fn apply_bootstrap_firewall(lan_cidrs: &[String]) {
     }
 
     for cidr in lan_cidrs {
-        for port in ["8112", "8118", "9099"] {
+        for port in ["8212", "8218", "9299"] {
             let _ = run_cmd(
                 "iptables",
                 &[
@@ -141,7 +141,7 @@ pub fn build_killswitch_rules(
     ];
 
     for cidr in lan_cidrs {
-        for port in ["8112", "8118", "9099"] {
+        for port in ["8212", "8218", "9299"] {
             rules.push(rule(&[
                 "-A", "INPUT", "-s", cidr, "-p", "tcp", "--dport", port, "-j", "ACCEPT",
             ]));
@@ -180,7 +180,7 @@ pub fn build_killswitch_rules(
         ]));
     }
 
-    // Never accept unsolicited inbound traffic on wg0 to ports 8112, 8118, or 9099!
+    // Never accept unsolicited inbound traffic on wg0 to ports 8212, 8218, or 9299!
     rules.push(rule(&[
         "-A",
         "INPUT",
@@ -191,7 +191,7 @@ pub fn build_killswitch_rules(
         "-m",
         "multiport",
         "--dports",
-        "8112,8118,9099",
+        "8212,8218,9299",
         "-j",
         "DROP",
     ]));
@@ -229,7 +229,7 @@ mod tests {
         assert!(rules.iter().any(|r| r == &["-P", "OUTPUT", "DROP"]));
         assert!(rules
             .iter()
-            .any(|r| r.contains(&"8112,8118,9099".to_string())));
+            .any(|r| r.contains(&"8212,8218,9299".to_string())));
         assert!(!rules
             .iter()
             .any(|r| r == &["-A", "INPUT", "-i", "wg0", "-j", "ACCEPT"]));

@@ -179,7 +179,7 @@ WebUI\\CSRFProtection=false\n\
 WebUI\\ClickjackingProtection=true\n\
 WebUI\\HostHeaderValidation=false\n\
 WebUI\\LocalHostAuth=false\n\
-WebUI\\Port=8112\n\
+WebUI\\Port=8212\n\
 WebUI\\SecureCookie=false\n\
 WebUI\\ServerDomains=*\n"
     )

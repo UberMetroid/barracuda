@@ -11,7 +11,7 @@
   <Project>https://github.com/UberMetroid/barracuda</Project>
   <Overview>Barracuda: Hardened, reproducible GNU Guix + zero-dependency Rust BitTorrent VPN appliance for the *arr stack (qBittorrent-nox + Private Internet Access WireGuard + automatic port-forwarding + HTTP/HTTPS CONNECT proxy for Prowlarr + real-time media malware/extension/magic-byte scrubber for Sonarr, Radarr, Lidarr, and Prowlarr).</Overview>
   <Category>Downloaders: Network:VPN Security:</Category>
-  <WebUI>http://[IP]:[PORT:8112]/</WebUI>
+  <WebUI>http://[IP]:[PORT:8212]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/UberMetroid/barracuda/main/unraid-template.xml</TemplateURL>
   <Icon>https://raw.githubusercontent.com/UberMetroid/barracuda/main/assets/barracuda-icon.png</Icon>
   <ExtraParams>--cap-add=NET_ADMIN --sysctl net.ipv4.conf.all.src_valid_mark=1 --sysctl net.ipv6.conf.all.disable_ipv6=1</ExtraParams>
@@ -20,15 +20,15 @@
   <DonateText/>
   <DonateLink/>
   <Requires/>
-  <Config Name="qBittorrent WebUI" Target="8112" Default="8112" Mode="tcp" Description="qBittorrent WebUI Port" Type="Port" Display="always" Required="true" Mask="false">8112</Config>
-  <Config Name="VPN HTTP/HTTPS Proxy" Target="8118" Default="8118" Mode="tcp" Description="HTTP/HTTPS CONNECT Proxy for Prowlarr indexers" Type="Port" Display="always" Required="false" Mask="false">8118</Config>
-  <Config Name="Health Status API" Target="9099" Default="9099" Mode="tcp" Description="JSON Health &amp; VPN Status API (/status)" Type="Port" Display="always" Required="false" Mask="false">9099</Config>
+  <Config Name="qBittorrent WebUI" Target="8212" Default="8212" Mode="tcp" Description="qBittorrent WebUI Port" Type="Port" Display="always" Required="true" Mask="false">8212</Config>
+  <Config Name="VPN HTTP/HTTPS Proxy" Target="8218" Default="8218" Mode="tcp" Description="HTTP/HTTPS CONNECT Proxy for Prowlarr indexers" Type="Port" Display="always" Required="false" Mask="false">8218</Config>
+  <Config Name="Health Status API" Target="9299" Default="9299" Mode="tcp" Description="JSON Health &amp; VPN Status API (/status)" Type="Port" Display="always" Required="false" Mask="false">9299</Config>
   <Config Name="Downloads Path" Target="/downloads" Default="/mnt/user/data/downloads" Mode="rw" Description="Shared downloads root (pre-configured with sonarr, radarr, lidarr, prowlarr subdirectories)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/data/downloads</Config>
   <Config Name="AppData Config Path" Target="/config" Default="/mnt/user/appdata/barracuda" Mode="rw" Description="Persistent configuration directory" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/barracuda</Config>
   <Config Name="PIA Username" Target="PIA_USER" Default="" Mode="" Description="Private Internet Access username (e.g. p1234567)" Type="Variable" Display="always" Required="true" Mask="false"/>
   <Config Name="PIA Password" Target="PIA_PASS" Default="" Mode="" Description="Private Internet Access password" Type="Variable" Display="always" Required="true" Mask="true"/>
   <Config Name="PIA Region" Target="PIA_REGION" Default="auto" Mode="" Description="PIA region ID with port-forwarding enabled (or 'auto')" Type="Variable" Display="always" Required="false" Mask="false">auto</Config>
-  <Config Name="LAN Network CIDRs" Target="LAN_NETWORK" Default="192.168.1.0/24,100.64.0.0/10" Mode="" Description="Comma-separated LAN/Tailscale subnets permitted to access ports 8112, 8118, and 9099" Type="Variable" Display="always" Required="true" Mask="false">192.168.1.0/24,100.64.0.0/10</Config>
+  <Config Name="LAN Network CIDRs" Target="LAN_NETWORK" Default="192.168.1.0/24,100.64.0.0/10" Mode="" Description="Comma-separated LAN/Tailscale subnets permitted to access ports 8212, 8218, and 9299" Type="Variable" Display="always" Required="true" Mask="false">192.168.1.0/24,100.64.0.0/10</Config>
   <Config Name="Sonarr URL (Optional)" Target="SONARR_URL" Default="" Mode="" Description="Optional Sonarr base URL (e.g. http://192.168.1.10:8989) for automatic release blocklisting on malware detection" Type="Variable" Display="advanced" Required="false" Mask="false"/>
   <Config Name="Sonarr API Key (Optional)" Target="SONARR_API_KEY" Default="" Mode="" Description="Optional Sonarr API key" Type="Variable" Display="advanced" Required="false" Mask="true"/>
   <Config Name="Radarr URL (Optional)" Target="RADARR_URL" Default="" Mode="" Description="Optional Radarr base URL (e.g. http://192.168.1.10:7878) for automatic release blocklisting on malware detection" Type="Variable" Display="advanced" Required="false" Mask="false"/>
